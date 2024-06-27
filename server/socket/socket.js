@@ -12,6 +12,10 @@ const io = new Server(server, {
   },
 });
 
+export const getReceiverSocketId = (receiverId) => {
+  return userSocketMap[receiverId];
+};
+
 const userSocketMap = {}; // {userId : socketId}
 
 io.on("connection", (socket) => {
@@ -21,6 +25,7 @@ io.on("connection", (socket) => {
   if (userId != "undefined") {
     userSocketMap[userId] = socket.id;
 
+    // send to every user
     io.emit("getOnlineUsers", Object.keys(userSocketMap));
   }
 
