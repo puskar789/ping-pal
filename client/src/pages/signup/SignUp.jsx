@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import GenderCheckbox from "./GenderCheckbox";
 import { Link } from "react-router-dom";
 import useSignup from "../../hooks/useSignup";
+import OAuth from "../../components/oauth/OAuth";
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
@@ -22,7 +23,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
+    // console.log(inputs);
     await signup(inputs);
   };
 
@@ -31,7 +32,10 @@ const SignUp = () => {
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
         <h1 className="text-3xl font-semibold text-center text-gray-300">
           Sign Up
-          <span className="text-purple-700"> Ping Pal</span>
+          <span className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 bg-clip-text text-transparent">
+            {" "}
+            Ping Pal
+          </span>
         </h1>
 
         <form onSubmit={handleSubmit}>
@@ -109,7 +113,7 @@ const SignUp = () => {
 
           <div>
             <button
-              className="btn btn-block btn-sm mt-2 border border-slate-700"
+              className="btn btn-block btn-sm mt-2 border border-slate-700 "
               disabled={loading}
             >
               {loading ? (
@@ -119,6 +123,7 @@ const SignUp = () => {
               )}
             </button>
           </div>
+          <OAuth gender={inputs.gender} />
         </form>
       </div>
     </div>

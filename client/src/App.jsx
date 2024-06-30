@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Link, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home.jsx";
 import Login from "./pages/login/Login.jsx";
 import SignUp from "./pages/signup/SignUp.jsx";
 import { Toaster } from "react-hot-toast";
 import { useAuthContext } from "./context/AuthContext.jsx";
+import Profile from "./pages/profile/Profile.jsx";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -22,6 +23,10 @@ function App() {
         <Route
           path="/signup"
           element={authUser ? <Navigate to="/" /> : <SignUp />}
+        />
+        <Route
+          path="/profile"
+          element={authUser ? <Profile /> : <Navigate to="/login" />}
         />
       </Routes>
       <Toaster />
