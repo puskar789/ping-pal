@@ -24,11 +24,19 @@ const Message = ({ message }) => {
           <img src={profilePic} alt="user avatar" />
         </div>
       </div>
-      <div
-        className={`chat-bubble pb-2 text-white ${bubbleBgColor} ${shakeClass}`}
-      >
-        {message.message}
-      </div>
+      {!message.message.includes("firebase") ? (
+        <div
+          className={`chat-bubble pb-2 text-white ${bubbleBgColor} ${shakeClass}`}
+        >
+          {message.message}
+        </div>
+      ) : (
+        <div
+          className={`chat-bubble pb-2 text-white ${bubbleBgColor} ${shakeClass}`}
+        >
+          <img src={message.message} alt="image" className="w-20 h-20" />
+        </div>
+      )}
       <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">
         {formattedTime}
       </div>

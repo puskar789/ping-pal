@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BsSend } from "react-icons/bs";
 import useSendMessage from "../../hooks/useSendMessage";
+import UpImage from "./UpImage";
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");
@@ -14,7 +15,10 @@ const MessageInput = () => {
   };
 
   return (
-    <form className="px-4 my-3" onSubmit={handleSubmit}>
+    <form
+      className="flex flex-row px-4 my-3 justify-between"
+      onSubmit={handleSubmit}
+    >
       <div className="w-full relative">
         <input
           type="text"
@@ -35,6 +39,7 @@ const MessageInput = () => {
           )}
         </button>
       </div>
+      <UpImage />
     </form>
   );
 };
